@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,30 +9,11 @@
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
   <script src="js/config.js"></script>
   <script defer src="js/listings.js"></script>
-
-  <style>
-    .back-to-main {
-      color: #C7A247 !important;
-      transition: color 0.3s ease;
-    }
-
-    .back-to-main:hover {
-      color: #E2C477 !important;
-    }
-  </style>
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="index.html" aria-label="Crystal Dukes Realty Team home">
-      <img src="assets/crystal-dukes-logo.png" alt="Crystal Dukes Realtor logo">
-    </a>
-
-    <nav>
-      <a class="back-to-main" href="https://crystaldukesrealtyteam.github.io/">Back to Crystal’s Website</a>
-      <a href="#properties">Browse Homes</a>
-      <a href="#contact">Contact</a>
-      <a class="button button-outline" href="admin.html">Admin Login</a>
-    </nav>
+    <a class="brand" href="index.html" aria-label="Crystal Dukes Realty Team home"><img src="assets/crystal-dukes-logo.png" alt="Crystal Dukes Realtor logo"></a>
+    <nav><a class="back-to-main" href="https://crystaldukesrealtyteam.github.io/">Back to Crystal’s Website</a><a href="#properties">Browse Homes</a><a href="#contact">Contact</a><a class="button button-outline" href="admin.html">Admin Login</a></nav>
   </header>
 
   <main>
@@ -51,10 +31,7 @@
 
     <section class="listing-section" id="properties">
       <div class="section-heading">
-        <div>
-          <p class="eyebrow">THE PROPERTY COLLECTION</p>
-          <h2>Explore Listings</h2>
-        </div>
+        <div><p class="eyebrow">THE PROPERTY COLLECTION</p><h2>Explore Listings</h2></div>
         <p class="muted">Find the right property for your next chapter.</p>
       </div>
 
@@ -64,7 +41,6 @@
           <button class="tab" data-status="active">Current Listings</button>
           <button class="tab" data-status="sold">Sold</button>
         </div>
-
         <div class="filter-row">
           <input id="search-input" type="search" placeholder="Search by address, city, or keyword" aria-label="Search listings">
           <select id="sort-select" aria-label="Sort listings">
@@ -75,9 +51,7 @@
         </div>
       </div>
 
-      <div id="listing-grid" class="listing-grid">
-        <div class="loading">Loading properties…</div>
-      </div>
+      <div id="listing-grid" class="listing-grid"><div class="loading">Loading properties…</div></div>
       <p id="empty-state" class="empty-state" hidden>No properties found. Please try another search or status filter.</p>
     </section>
 
@@ -87,7 +61,6 @@
         <h2>Have a property in mind?</h2>
         <p>Reach out to Crystal for more information or to schedule a showing.</p>
       </div>
-
       <div class="contact-actions">
         <a class="button button-gold" href="https://www.facebook.com/crystal.goinesdukes/">Connect with Crystal →</a>
         <span class="kw-divider" aria-hidden="true"></span>
@@ -96,10 +69,7 @@
     </section>
   </main>
 
-  <footer class="site-footer">
-    <span>© <span id="year"></span> Crystal Dukes Realty Team</span>
-    <span>Dothan, Alabama · Serving AL, FL & GA</span>
-  </footer>
+  <footer class="site-footer"><span>© <span id="year"></span> Crystal Dukes Realty Team</span><span>Dothan, Alabama · Serving AL, FL & GA</span></footer>
 
   <dialog id="property-dialog" class="property-dialog">
     <button class="dialog-close" id="dialog-close" aria-label="Close details">×</button>
