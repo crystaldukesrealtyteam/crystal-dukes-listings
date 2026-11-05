@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Listings Admin | Crystal Dukes Realty Team</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script defer src="js/admin.js"></script>
+</head>
+<body class="admin-body">
+  <header class="site-header"><a class="brand" href="index.html" aria-label="Crystal Dukes Realty Team home"><img src="assets/crystal-dukes-logo.png" alt="Crystal Dukes Realtor logo"><span class="admin-brand-label">LISTINGS ADMIN</span></a><nav><a href="index.html">View Public Site ↗</a></nav></header>
+  <main class="admin-main">
+    <section id="login-panel" class="login-panel">
+      <p class="eyebrow">PRIVATE ACCESS</p><h1>Listings Dashboard</h1><p class="muted">Sign in to manage Crystal's property listings.</p>
+      <form id="login-form" class="stack-form">
+        <label>Email<input type="email" id="login-email" required autocomplete="username"></label>
+        <label>Password<input type="password" id="login-password" required autocomplete="current-password"></label>
+        <button class="button button-primary" type="submit">Sign In</button>
+        <p id="login-message" class="form-message" role="status"></p>
+      </form>
+    </section>
+
+    <section id="dashboard" hidden>
+      <div class="dashboard-heading"><div><p class="eyebrow">PROPERTY MANAGEMENT</p><h1>Listings Dashboard</h1><p class="muted" id="signed-in-user"></p></div><button id="signout-button" class="button button-outline">Sign Out</button></div>
+      <div class="admin-stats" id="admin-stats"></div>
+
+      <div class="admin-layout">
+        <section class="admin-card">
+          <div class="card-heading"><h2 id="form-title">Add a Property</h2><button id="cancel-edit" class="text-button" hidden>Cancel edit</button></div>
+          <form id="property-form" class="stack-form">
+            <input type="hidden" id="property-id">
+            <label>Property title<input id="title" required placeholder="e.g. Charming home near downtown"></label>
+            <label>Street address<input id="address" required></label>
+            <div class="form-grid">
+              <label>City<input id="city" required></label>
+              <label>State<input id="state" value="AL" maxlength="2" required></label>
+              <label>ZIP code<input id="zip" inputmode="numeric"></label>
+              <label>Price (USD)<input id="price" type="number" min="0" step="1000"></label>
+              <label>Bedrooms<input id="bedrooms" type="number" min="0" step="1"></label>
+              <label>Bathrooms<input id="bathrooms" type="number" min="0" step="0.5"></label>
+              <label>Square feet<input id="sqft" type="number" min="0"></label>
+              <label>Status<select id="status"><option value="active">Current Listing</option><option value="under_contract">Under Contract</option><option value="sold">Sold</option></select></label>
+            </div>
+            <label>Description<textarea id="description" rows="4" placeholder="Property highlights and details"></textarea></label>
+            <label>Property photos<input id="photos" type="file" accept="image/*" multiple><small class="muted">You can select multiple images. Existing photos are retained when editing unless replaced.</small></label>
+            <label class="check-label"><input id="featured" type="checkbox"> Feature this property</label>
+            <label class="check-label"><input id="published" type="checkbox" checked> Publish on public website</label>
+            <button class="button button-primary" type="submit" id="save-button">Save Property</button>
+            <p id="form-message" class="form-message" role="status"></p>
+          </form>
+        </section>
+
+        <section class="admin-card">
+          <div class="card-heading"><h2>Manage Properties</h2><input id="admin-search" class="compact-search" placeholder="Search properties"></div>
+          <div id="admin-property-list" class="admin-property-list"><p class="muted">Loading properties…</p></div>
+        </section>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><span>Private admin area</span><span>Crystal Dukes Realty Team</span></footer>
+</body>
+</html>

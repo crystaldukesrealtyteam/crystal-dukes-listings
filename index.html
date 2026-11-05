@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Browse homes and properties listed by Crystal Dukes Realty Team across Southeast Alabama, Northwest Florida, and Southwest Georgia.">
+  <title>Property Listings | Crystal Dukes Realty Team</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/config.js"></script>
+  <script defer src="js/listings.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Crystal Dukes Realty Team home"><img src="assets/crystal-dukes-logo.png" alt="Crystal Dukes Realtor logo"></a>
+    <nav><a class="back-to-main" href="https://crystaldukesrealtyteam.github.io/">Back to Crystal’s Website</a><a href="#properties">Browse Homes</a><a href="#contact">Contact</a><a class="button button-outline" href="admin.html">Admin Login</a></nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">REALTOR® · KELLER WILLIAMS REALTY</p>
+      <h1>Find Your Next<br><em>Home.</em></h1>
+      <p class="hero-copy">Explore homes across Southeast Alabama, Northwest Florida, and Southwest Georgia. Find the right place for your next chapter with Crystal Dukes.</p>
+      <a class="button button-gold" href="#properties">VIEW LISTINGS <span>→</span></a>
+    </section>
+
+    <section class="stats stats-two" aria-label="Listing counts">
+      <div><strong id="active-count">—</strong><span>Active Listings</span></div>
+      <div><strong id="sold-count">—</strong><span>Sold Properties</span></div>
+    </section>
+
+    <section class="listing-section" id="properties">
+      <div class="section-heading">
+        <div><p class="eyebrow">THE PROPERTY COLLECTION</p><h2>Explore Listings</h2></div>
+        <p class="muted">Find the right property for your next chapter.</p>
+      </div>
+
+      <div class="filters">
+        <div class="tabs" role="tablist" aria-label="Filter by listing status">
+          <button class="tab active" data-status="all">All Properties</button>
+          <button class="tab" data-status="active">Current Listings</button>
+          <button class="tab" data-status="sold">Sold</button>
+        </div>
+        <div class="filter-row">
+          <input id="search-input" type="search" placeholder="Search by address, city, or keyword" aria-label="Search listings">
+          <select id="sort-select" aria-label="Sort listings">
+            <option value="newest">Newest first</option>
+            <option value="price-low">Price: low to high</option>
+            <option value="price-high">Price: high to low</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="listing-grid" class="listing-grid"><div class="loading">Loading properties…</div></div>
+      <p id="empty-state" class="empty-state" hidden>No properties found. Please try another search or status filter.</p>
+    </section>
+
+    <section class="contact-band" id="contact">
+      <div class="contact-copy">
+        <p class="eyebrow">LET'S FIND YOUR NEXT HOME</p>
+        <h2>Have a property in mind?</h2>
+        <p>Reach out to Crystal for more information or to schedule a showing.</p>
+      </div>
+      <div class="contact-actions">
+        <a class="button button-gold" href="https://www.facebook.com/crystal.goinesdukes/">Connect with Crystal →</a>
+        <span class="kw-divider" aria-hidden="true"></span>
+        <img class="kw-partner-logo" src="assets/kw-southeast-alabama.png" alt="Keller Williams Realty Southeast Alabama">
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><span>© <span id="year"></span> Crystal Dukes Realty Team</span><span>Dothan, Alabama · Serving AL, FL & GA</span></footer>
+
+  <dialog id="property-dialog" class="property-dialog">
+    <button class="dialog-close" id="dialog-close" aria-label="Close details">×</button>
+    <div id="dialog-content"></div>
+  </dialog>
+</body>
+</html>
