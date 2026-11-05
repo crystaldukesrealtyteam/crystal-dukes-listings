@@ -797,22 +797,26 @@ button.button-gold:hover {
   }
 }
 
-/* Link back to Crystal's main real estate website */
-.site-header nav .back-to-main {
-  color: var(--red);
-  font-weight: 700;
-  letter-spacing: .45px;
-  white-space: nowrap;
+/* Link back to Crystal's main real estate website - GOLD */
+.site-header nav .back-to-main,
+.site-header nav .back-to-main:visited {
+    color: #C7A247 !important;
+    font-weight: 700;
+    letter-spacing: .45px;
+    white-space: nowrap;
 }
-.site-header nav .back-to-main:hover {
-  color: var(--gold);
+
+.site-header nav .back-to-main:hover,
+.site-header nav .back-to-main:focus {
+    color: #E2C477 !important;
 }
+
 @media(max-width:600px) {
-  .site-header nav>a.back-to-main {
-    display:inline-flex;
-    font-size:10px;
-    line-height:1.3;
-    white-space:normal;
-    max-width:118px;
-  }
+    .site-header nav > a.back-to-main {
+        display: inline-flex;
+        font-size: 10px;
+        line-height: 1.3;
+        white-space: normal;
+        max-width: 118px;
+    }
 }
