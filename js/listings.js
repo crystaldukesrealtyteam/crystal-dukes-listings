@@ -15,7 +15,7 @@
       '<div class="setup-notice">Connect your Supabase project in <code>js/config.js</code> to load live listings.</div>';
 
     ["active-count", "sold-count"].forEach(
-      (id) => ($ (id).textContent = "0")
+      (id) => ($(id).textContent = "0")
     );
 
     return;
@@ -49,7 +49,6 @@
 
   const statusLabel = (value) => ({
     active: "Current Listing",
-    under_contract: "Under Contract",
     sold: "Sold"
   }[value] || value);
 
@@ -113,27 +112,44 @@
       .map(
         (p) => `
         <article class="property-card">
-          <button class="property-image" data-open="${escapeHTML(p.id)}" aria-label="View ${escapeHTML(p.title)}">
+          <button class="property-image"
+            data-open="${escapeHTML(p.id)}"
+            aria-label="View ${escapeHTML(p.title)}">
+
             ${
               photo(p)
                 ? `<img src="${escapeHTML(photo(p))}" alt="${escapeHTML(p.title)}">`
                 : `<span class="image-placeholder">CRYSTAL DUKES<br>REALTY TEAM</span>`
             }
-            <span class="status-pill status-${escapeHTML(p.status)}">${escapeHTML(statusLabel(p.status))}</span>
+
+            <span class="status-pill status-${escapeHTML(p.status)}">
+              ${escapeHTML(statusLabel(p.status))}
+            </span>
           </button>
 
           <div class="property-info">
             <p class="property-price">${money(p.price)}</p>
+
             <h3>${escapeHTML(p.title)}</h3>
 
             <p class="property-location">
-              ${escapeHTML([p.address, p.city, p.state, p.zip_code].filter(Boolean).join(", "))}
+              ${escapeHTML(
+                [p.address, p.city, p.state, p.zip_code]
+                  .filter(Boolean)
+                  .join(", ")
+              )}
             </p>
 
             <div class="property-meta">
               <span><strong>${p.bedrooms ?? "—"}</strong> bd</span>
               <span><strong>${p.bathrooms ?? "—"}</strong> ba</span>
-              <span><strong>${p.square_feet ? Number(p.square_feet).toLocaleString() : "—"}</strong> sqft</span>
+              <span>
+                <strong>
+                  ${p.square_feet
+                    ? Number(p.square_feet).toLocaleString()
+                    : "—"}
+                </strong> sqft
+              </span>
             </div>
 
             <button class="details-link" data-open="${escapeHTML(p.id)}">
@@ -171,25 +187,36 @@
 
       <p class="property-price">${money(p.price)}</p>
 
-      <p>${escapeHTML(
-        [p.address, p.city, p.state, p.zip_code]
-          .filter(Boolean)
-          .join(", ")
-      )}</p>
+      <p>
+        ${escapeHTML(
+          [p.address, p.city, p.state, p.zip_code]
+            .filter(Boolean)
+            .join(", ")
+        )}
+      </p>
 
       <div class="property-meta">
         <span>${p.bedrooms ?? "—"} bedrooms</span>
         <span>${p.bathrooms ?? "—"} bathrooms</span>
-        <span>${p.square_feet ? Number(p.square_feet).toLocaleString() + " sqft" : "Size not listed"}</span>
+        <span>
+          ${p.square_feet
+            ? Number(p.square_feet).toLocaleString() + " sqft"
+            : "Size not listed"}
+        </span>
       </div>
 
       <p class="detail-description">
-        ${escapeHTML(p.description || "Contact Crystal for additional property details.")}
+        ${escapeHTML(
+          p.description ||
+          "Contact Crystal for additional property details."
+        )}
       </p>
 
       <a
         class="button button-primary"
-        href="mailto:crystaldukes@kw.com?subject=${encodeURIComponent("Property inquiry: " + p.title)}"
+        href="mailto:crystaldukes@kw.com?subject=${encodeURIComponent(
+          "Property inquiry: " + p.title
+        )}"
       >
         Ask Crystal About This Property
       </a>
@@ -213,8 +240,11 @@
   $("sort-select").addEventListener("change", render);
 
   $("listing-grid").addEventListener("click", (e) => {
-    const b = e.target.closest("[data-open]");
-    if (b) openDetails(b.dataset.open);
+    const button = e.target.closest("[data-open]");
+
+    if (button) {
+      openDetails(button.dataset.open);
+    }
   });
 
   $("dialog-close").addEventListener("click", () =>
